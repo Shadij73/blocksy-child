@@ -1,9 +1,12 @@
 <?php
-if (! defined('WP_DEBUG')) {
-	die( 'Direct access forbidden.' );
-}
-add_action( 'wp_enqueue_scripts', function () {
-	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-});
+add_filter('wp_nav_menu_items', 'hide_admin_menu_item', 10, 2);
 
-//test
+function hide_admin_menu_item($items, $args) {
+    if (!is_user_logged_in()) {
+        if (stripos($items, 'Admin') !== false) {
+            $items = preg_replace('/<li.*?<a.*?>.*?Admin.*?<\/a><\/li>/i', '', $items);
+        }
+    }
+    return $items;
+}
+?>

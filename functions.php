@@ -10,4 +10,5 @@ function hide_admin_menu_item($items, $args) {
     return $items;
 }
 //Test comment02
+echo ("Test123")
 ?>

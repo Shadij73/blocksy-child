@@ -9,4 +9,5 @@ function hide_admin_menu_item($items, $args) {
     }
     return $items;
 }
+//Sout.
 ?>
